@@ -11,6 +11,24 @@ use Illuminate\Support\Facades\Http;
 
 class GameController extends Controller
 {
+    public function apiGameShow($slug)
+    {
+        $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&search='.urlencode($slug).'&search_exact=true');
+        $data = json_decode($content);
+        $game=$data->results;
+
+        return response()->json($game, 200);
+    }
+
+    public function search(Request $request)
+    {
+        $name = $request->search;
+        //dd($name);
+        return redirect()->route('game.show', $name);
+        //$this->show($name);
+        //return view('GamePortal.show');
+    }
+
     public function useredit()
     {
         return view('GamePortal.user.edit');
@@ -42,11 +60,20 @@ class GameController extends Controller
     {
         //return urlencode($name);
         //$name=$this->escapefile_url($name);
+
         $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&search='.urlencode($name).'&search_exact=true');
         $data = json_decode($content);
         $game=$data->results;
+
+        //dd($game[0]->slug);
+        $content = file_get_contents('https://api.rawg.io/api/games/'.$game[0]->slug.'/movies?key=9167fc26de294c36bf13e920bff83f3e');
+        $data = json_decode($content);
+        $trailer = $data->results[0] ?? null;
         //dd($game);
-        return view('GamePortal.show', ['game'=>$game]);
+        //dd($trailer->data->max);
+
+
+        return view('GamePortal.show', ['game'=>$game, 'trailer'=>$trailer]);
     }
 
     public function store()
@@ -180,7 +207,7 @@ class GameController extends Controller
 
     public function testGameInput()
     {
-        $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page=2');
+        $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page=3');
         $data = json_decode($content);
 //        return $data; // ошибка
 //        dd($data); // object
@@ -195,7 +222,8 @@ class GameController extends Controller
         //$image = $data;
 
         return view('index', [
-            'data' => $data
+            'data' => $data,
+            'main_class' => "text-secondary"
         ]);
 
 //        return view('index', [

@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
 
         $page=1;
-         \App\Models\User::factory(10)->create();
+         //\App\Models\User::factory(10)->create();
         //$content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page_size=40&page='.$page);
 //        $data = json_decode($content);
 //        $games=$data->results;

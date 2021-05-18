@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RedirectRouteController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -78,6 +79,12 @@ Route::get('/games/store', [GameController::class, 'store']);
 Route::get('/games/test', [GameController::class, 'test']);
 Route::get('/games/reqtest', [GameController::class, 'testRequest']);
 Route::get('/games/{name}', [GameController::class, 'show'])->name('game.show');
+Route::post('/games/search', [GameController::class, 'search'])->name('game.search');
+Route::get('/friends', [UserController::class, 'index'])->name('friend.index');
+Route::post('/friendrequest/{sender}/{recipient}', [UserController::class, 'friendRequest'])->name('user.friendrequest');
+Route::get('/friendstore', [UserController::class, 'friendStore'])->name('friend.store');
+Route::get('/frienddeny', [UserController::class, 'friendDeny'])->name('friend.deny');
+
 
 Route::get('/index', [GameController::class, 'testGameInput'])->name('game.index');
 Route::get('/justtest', [GameController::class, 'justtest']);
