@@ -1,16 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+@extends('GamePortal.layouts.app')
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+@section('title')
+    {{$game[0]->name}}
+@endsection
+
+@section('content')
     {{--    <style>--}}
 {{--        * {--}}
 {{--            box-sizing: border-box--}}
@@ -51,8 +45,7 @@
 {{--            color: red;--}}
 {{--        }--}}
 {{--    </style>--}}
-</head>
-<body>
+
 
 {{--<a data-fancybox="gallery" href="big_1.jpg"><img src="small_1.jpg"></a>--}}
 {{--<a data-fancybox="gallery" href="big_2.jpg"><img src="small_2.jpg"></a>--}}
@@ -76,17 +69,10 @@
 </h3>
 
 <div class="container py-5"  id="custom-cards">
-
     <h2 class="pb-2 border-bottom">Скриншоты</h2>
-
     <div class="d-flex row row-cols-3 align-items-stretch py-5">
 
-
-
-
 {{--        <a href="#img1"><img src="{{ $screenshot->image}}" alt=""></a>--}}
-
-
 
 
 @foreach($game[0]->short_screenshots as $screenshot)
@@ -148,6 +134,4 @@
     <a href="https://steamcdn-a.akamaihd.net/steam/apps/256667913/movie_max.mp4">Скачайте видео</a>.
 </video>
 
-</body>
-
-</html>
+@endsection

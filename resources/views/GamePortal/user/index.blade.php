@@ -1,15 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+@extends('GamePortal.layouts.app')
 
-    <title>Document</title>
-</head>
-<body>
+@section('content')
+
 @include('components.test.header')
 
 @include('components.test.sidebar')
@@ -17,6 +9,7 @@
 <h3>
     Заявки в друзья:
 </h3>
+
 @foreach($senders as $sender)
 <h4>
     {{$sender->name}} - {{$sender->email}}
@@ -30,20 +23,21 @@
 </a>
 @endforeach
 
+
 <p>
     <h3>
         Друзья:
     </h3>
+
     @foreach($friends as $friend)
-        <h4>
-            {{$friend->name}} - {{$friend->email}}
-        </h4>
+    <h4>
+        {{$friend->name}} - {{$friend->email}}
+    </h4>
     @endforeach
 </p>
 
-{{--@foreach($friends as $friend)--}}
 
-{{--@endforeach--}}
+
 <p>
     <h3>
         Все пользователи:
@@ -61,8 +55,9 @@
         <input type="submit" placeholder="Добавить в друзья">
     </form>
     </p>
+    @endforeach
 </p>
-@endforeach
 
-</body>
-</html>
+
+
+@endsection

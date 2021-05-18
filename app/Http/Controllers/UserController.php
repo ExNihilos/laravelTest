@@ -84,6 +84,5 @@ class UserController extends Controller
     public function checkRequest()
     {
        return FriendRequest::where('recipient_id', Auth::id())->get();
-
     }
 }

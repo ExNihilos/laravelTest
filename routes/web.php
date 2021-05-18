@@ -4,6 +4,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\BladeController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\MarketController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
@@ -85,6 +86,8 @@ Route::post('/friendrequest/{sender}/{recipient}', [UserController::class, 'frie
 Route::get('/friendstore', [UserController::class, 'friendStore'])->name('friend.store');
 Route::get('/frienddeny', [UserController::class, 'friendDeny'])->name('friend.deny');
 
+Route::get('/market', [MarketController::class, 'index'])->name('market.index');
+
 
 Route::get('/index', [GameController::class, 'testGameInput'])->name('game.index');
 Route::get('/justtest', [GameController::class, 'justtest']);
@@ -102,7 +105,6 @@ Route::get('/{year}/{month}/{day}', function ($year, $month, $day){return "{$yea
 //Route::get('user/{name?}', function ($name = null) {
 //    return $name;
 //});
-
 
 
 Route::prefix('/admin')->name('admin.')->group(function() {
