@@ -134,4 +134,26 @@
     <a href="https://steamcdn-a.akamaihd.net/steam/apps/256667913/movie_max.mp4">Скачайте видео</a>.
 </video>
 
+    <div class="container py-5"  id="custom-cards">
+        <h2 class="pb-2 border-bottom">Отзывы</h2>
+        <div class="d-flex row row-cols-3 align-items-stretch py-5">
+            <div class="container">
+                @foreach($reviews as $review)
+                {{$review->text}}
+                <div class="pt-3">
+                    {{$review->user->name}} - {{$review->user->email}}
+                </div>
+                    <hr><br>
+                @endforeach
+            </div>
+            <form action="{{route('reviews.store', [$game[0]->name])}}" method="POST">
+                @csrf
+                <div><textarea name="text" id="text" cols="50" rows="10" placeholder="Введите текст вашего отзыва"></textarea></div>
+                <div><input type="submit" class="mt-2 btn btn-warning" value="Отправить отзыв"></div>
+            </form>
+        </div>
+    </div>
+
 @endsection
+
+

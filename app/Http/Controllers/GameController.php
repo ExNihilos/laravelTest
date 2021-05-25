@@ -4,13 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 //use http\Client;
+use App\Models\Review;
 use http\QueryString;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
+use \Dejurin\GoogleTranslateForFree;
 
 class GameController extends Controller
 {
+    public function testTranslate()
+    {
+        $source = 'pl';
+        $target = 'ru';
+        $attempts = 5;
+        $text = "tylko jedno w gwole mam koksu pienc gram, odleciec sam w krajine zapomnenia";
+
+        $translate = new GoogleTranslateForFree();
+        $result = $translate->translate($source, $target, $text, $attempts);
+        dd($result);
+
+        $text = 'adventure';
+        $response = Http::get('http://translate.google.ru/translate_a/t?client=x&text=adventure&hl=en&sl=en&tl=ru');
+       // $content = file_get_contents('http://translate.google.ru/translate_a/t?client=x&text=adventure&hl=en&sl=en&tl=ru');
+        //$data = json_decode($content);
+        dd($data = json_decode($response));
+    }
+
     public function apiGameShow($slug)
     {
         $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&search='.urlencode($slug).'&search_exact=true');
@@ -35,6 +55,24 @@ class GameController extends Controller
     }
     public  function  justtest()
     {
+        $page=1;
+        //\App\Models\User::factory(10)->create();
+        //$content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page_size=40&page='.$page);
+//        $data = json_decode($content);
+//        $games=$data->results;
+        for ($i=1; $i<10; $i++, $page++) {
+            $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page_size=40&page=' . $page);
+            $data = json_decode($content);
+            $games = $data->results;
+            foreach ($games as $game) {
+                $content = file_get_contents('https://api.rawg.io/api/games/' . $game->slug . '?key=9167fc26de294c36bf13e920bff83f3e');
+                $data2 = json_decode($content);
+
+                //dd($game);
+            }
+        }
+
+
         $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page_size=40');
         $data = json_decode($content);
         $games=$data->results;
@@ -72,8 +110,25 @@ class GameController extends Controller
         //dd($game);
         //dd($trailer->data->max);
 
+        //$review = Review::find(1);
+       // $review2 = Review::find(2)->user->where('name', 'aaa')->get();
+        //dd($review2->name);
+       // dd($review2[0]->name);
+        //dd($review->user()->where);
+        //dd($game[0]);
+        $gameForReview = Game::where('name', $name)->first();
+        $reviews = $gameForReview->reviews;
+        //dd($reviews);
+        //dd($review->user());
+        //dd($reviews);
 
-        return view('GamePortal.show', ['game'=>$game, 'trailer'=>$trailer]);
+
+
+        return view('GamePortal.show', [
+            'game'=>$game,
+            'trailer'=>$trailer,
+            'reviews'=>$reviews
+        ]);
     }
 
     public function store()

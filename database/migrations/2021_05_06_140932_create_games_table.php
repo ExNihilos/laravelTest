@@ -26,6 +26,7 @@ class CreateGamesTable extends Migration
                 $table->string('poster')->nullable();
                 $table->integer('price')->nullable();
                 $table->integer('sales')->nullable();
+
                 $table->timestamps();
 
 //            $table->foreign('developer')->references('name')->on('developers');

@@ -9,6 +9,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RedirectRouteController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -88,6 +89,8 @@ Route::get('/frienddeny', [UserController::class, 'friendDeny'])->name('friend.d
 
 Route::get('/market', [MarketController::class, 'index'])->name('market.index');
 
+Route::post('/reviews/{name}', [ReviewController::class, 'store'])->name('reviews.store');
+
 
 Route::get('/index', [GameController::class, 'testGameInput'])->name('game.index');
 Route::get('/justtest', [GameController::class, 'justtest']);
@@ -106,6 +109,7 @@ Route::get('/{year}/{month}/{day}', function ($year, $month, $day){return "{$yea
 //    return $name;
 //});
 
+Route::get('test/translate', [GameController::class, 'testTranslate']);
 
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('user/{user}', function (User $user){
