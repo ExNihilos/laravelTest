@@ -62,9 +62,11 @@
 {{--    <img src="https://img4.goodfon.ru/wallpaper/nbig/d/9f/skull-and-bones-ship-pirate-ship-game-pirate-kaizoku-flag-su.jpg" style="width: 400px">--}}
 {{--</a>--}}
 
-@include('components.test.header')
 
-@include('components.test.sidebar')
+
+{{--@include('components.test.header')--}}
+
+{{--@include('components.test.sidebar')--}}
 
 
 {{--<h2 style="display: inline-block; float: left" class="border-bottom">Игры</h2>--}}

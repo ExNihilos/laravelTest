@@ -15,15 +15,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserSeeder::class,
-            GameSeeder::class
+            //UserSeeder::class,
+           // GameSeeder::class,
+            //TagSeeder::class,
+            GameTag_Seeder::class
+
         ]);
 
 
-//        $page=1;
-//        //$content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page_size=40&page='.$page);
-////        $data = json_decode($content);
-////        $games=$data->results;
 //        for ($i=1; $i<10; $i++, $page++)
 //        {
 //            $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page_size=40&page='.$page);
@@ -40,17 +39,5 @@ class DatabaseSeeder extends Seeder
 //                ]);
 //            }
 //        }
-
-
-
-
-
-
-
-
-
-//
-//
-
     }
 }

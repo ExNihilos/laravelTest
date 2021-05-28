@@ -13,4 +13,9 @@ class Game extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

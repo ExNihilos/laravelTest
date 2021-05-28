@@ -63,6 +63,43 @@
                     <li><a href="#" class="link-dark rounded">Sign out</a></li>
                 </ul>
             </div>
+
+
+                @yield('testsidebar')
+
+                @if(str_contains(request()->path(), 'market'))
+                    <h5 class="h-16">
+                        Жанры:
+                    </h5>
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ml-4 small">
+                        @foreach($genres as $genre)
+                              <li>
+                                  <a href="{{route('market.show', $genre->name)}}" class="link-dark rounded">
+                                      {{$genre->name}}
+                                  </a>
+                              </li>
+                        @endforeach
+                    </ul>
+
+                <div class="mt-3">
+                    <h5 class="h-16">
+                        Теги:
+                    </h5>
+                </div>
+
+
+                    <form action="{{route('market.index')}}">
+
+                        @foreach($tags as $tag)
+                            <div>
+                                <label for="tag_{{$tag->id}}">{{$tag->name}}</label>
+                                <input id="tag_{{$tag->id}}" name="tags[]" type="checkbox" value="{{$tag->id}}">
+                            </div>
+                        @endforeach
+                            <input type="submit" value="Найти" class="btn btn-dark">
+                    </form>
+
+                @endif
         </li>
     </ul>
 </div>

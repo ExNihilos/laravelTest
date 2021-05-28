@@ -13,6 +13,7 @@ use \Dejurin\GoogleTranslateForFree;
 
 class GameController extends Controller
 {
+
     public function testTranslate()
     {
         $source = 'pl';
@@ -123,8 +124,10 @@ class GameController extends Controller
         //dd($reviews);
 
 
+        $gamefordesc=Game::where('name',$name)->first();
 
         return view('GamePortal.show', [
+            'descriptions' =>$gamefordesc,
             'game'=>$game,
             'trailer'=>$trailer,
             'reviews'=>$reviews

@@ -51,9 +51,9 @@
 {{--<a data-fancybox="gallery" href="big_2.jpg"><img src="small_2.jpg"></a>--}}
 
 
-@include('components.test.header')
+{{--@include('components.test.header')--}}
 
-@include('components.test.sidebar')
+{{--@include('components.test.sidebar')--}}
 
 <br>
 <h3>
@@ -67,6 +67,18 @@
 <h3>
     Дата выхода: {{$game[0]->released}}
 </h3>
+
+    <h3>
+        Описание:
+    </h3>
+
+    <div class="container">
+
+        <h4 class="text-indigo-500">
+            {{$descriptions->description}}
+        </h4>
+    </div>
+
 
 <div class="container py-5"  id="custom-cards">
     <h2 class="pb-2 border-bottom">Скриншоты</h2>

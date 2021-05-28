@@ -76,6 +76,8 @@ Route::group(['prefix'=>'test'], function() {
 });
 
 
+Route::get('gameportal/test', [Controllers\TestGameController::class, 'game_tag_InputTest']);
+
 Route::get('/games', [GameController::class, 'index']);
 Route::get('/games/store', [GameController::class, 'store']);
 Route::get('/games/test', [GameController::class, 'test']);
@@ -88,6 +90,8 @@ Route::get('/friendstore', [UserController::class, 'friendStore'])->name('friend
 Route::get('/frienddeny', [UserController::class, 'friendDeny'])->name('friend.deny');
 
 Route::get('/market', [MarketController::class, 'index'])->name('market.index');
+Route::get('/market/{genre}', [MarketController::class, 'show'])->name('market.show');
+Route::get('/market/tags', [MarketController::class, 'showWithTags'])->name('market.search');
 
 Route::post('/reviews/{name}', [ReviewController::class, 'store'])->name('reviews.store');
 

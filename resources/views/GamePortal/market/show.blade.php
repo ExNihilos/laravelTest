@@ -7,13 +7,8 @@
 @section('content')
 
 {{--    @include('components.test.header')--}}
-{{--    @extends('components.test.sidebar')--}}
+
 {{--    @include('components.test.sidebar')--}}
-
-{{--    @section('testsidebar')--}}
-{{--        HUIGOVNOSOBAKA--}}
-{{--    @endsection--}}
-
 
     <div class="container">
         @foreach($games as $game)
@@ -22,9 +17,6 @@
     </div>
 
 
-    {{$games->links('vendor.pagination.tailwind-custom')}}
+{{--    {{$games->links('vendor.pagination.tailwind')}}--}}
 
 @endsection
-
-
-
