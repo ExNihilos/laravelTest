@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function friendDestroy()
+    {
 
+    }
 
     public function friendDeny(Request $request)
     {
-
         $f=FriendRequest::where('sender_id', $request->sender)->where('recipient_id', $request->recipient)->delete();
         return redirect()->back();
     }
@@ -84,5 +86,12 @@ class UserController extends Controller
     public function checkRequest()
     {
        return FriendRequest::where('recipient_id', Auth::id())->get();
+    }
+
+    public function edit()
+    {
+        return view('GamePortal.user.edit', [
+            'user' => Auth::user()
+        ]);
     }
 }

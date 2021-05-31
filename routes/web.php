@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RedirectRouteController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TestGameController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -76,10 +77,8 @@ Route::group(['prefix'=>'test'], function() {
 });
 
 
-Route::get('gameportal/test', [Controllers\TestGameController::class, 'game_tag_InputTest']);
-
+Route::get('/', [GameController::class, 'testGameInput'])->name('game.index');
 Route::get('/games', [GameController::class, 'index']);
-Route::get('/games/store', [GameController::class, 'store']);
 Route::get('/games/test', [GameController::class, 'test']);
 Route::get('/games/reqtest', [GameController::class, 'testRequest']);
 Route::get('/games/{name}', [GameController::class, 'show'])->name('game.show');
@@ -88,19 +87,17 @@ Route::get('/friends', [UserController::class, 'index'])->name('friend.index');
 Route::post('/friendrequest/{sender}/{recipient}', [UserController::class, 'friendRequest'])->name('user.friendrequest');
 Route::get('/friendstore', [UserController::class, 'friendStore'])->name('friend.store');
 Route::get('/frienddeny', [UserController::class, 'friendDeny'])->name('friend.deny');
+Route::delete('/{friend?}/frienddestroy', [UserController::class, 'friendDestroy'])->name('friends.destroy');
 
 Route::get('/market', [MarketController::class, 'index'])->name('market.index');
 Route::get('/market/{genre}', [MarketController::class, 'show'])->name('market.show');
 Route::get('/market/tags', [MarketController::class, 'showWithTags'])->name('market.search');
 
-Route::post('/reviews/{name}', [ReviewController::class, 'store'])->name('reviews.store');
+Route::post('/games/{id}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
-
-Route::get('/index', [GameController::class, 'testGameInput'])->name('game.index');
-Route::get('/justtest', [GameController::class, 'justtest']);
 
 Route::put('/users/{id}/update', [GameController::class, 'userupdate'])->name('user.update');
-Route::get('/users/me', [GameController::class, 'useredit'])->name('user.edit');
+Route::get('/users/me', [UserController::class, 'edit'])->name('user.edit');
 
 //Route::get('/index', function (){
 //   return view('index');
@@ -113,7 +110,6 @@ Route::get('/{year}/{month}/{day}', function ($year, $month, $day){return "{$yea
 //    return $name;
 //});
 
-Route::get('test/translate', [GameController::class, 'testTranslate']);
 
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('user/{user}', function (User $user){
@@ -128,5 +124,12 @@ Route::prefix('/admin')->name('admin.')->group(function() {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/test', [TestGameController::class, 'game_tag_InputTest']);
+Route::get('/test/translate', [TestGameController::class, 'testTranslate']);
+Route::get('/test/justtest', [TestGameController::class, 'justtest']);
+
+
 
 require __DIR__.'/auth.php';

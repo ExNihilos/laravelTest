@@ -2,9 +2,11 @@
 
 @section('content')
 
-@include('components.test.header')
+{{--@include('components.test.header')--}}
 
-@include('components.test.sidebar')
+{{--@include('components.test.sidebar')--}}
+
+<div class="container d-flex row row-cols-1">
 
 <h3>
     Заявки в друзья:
@@ -29,9 +31,16 @@
         Друзья:
     </h3>
 
+
     @foreach($friends as $friend)
     <h4>
         {{$friend->name}} - {{$friend->email}}
+        <a href="{{route('friends.destroy')}}">
+            <button type="button"
+                    class="bg-white hover:bg-gray-200 text-gray-700 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                Удалить из друзей
+            </button>
+        </a>
     </h4>
     @endforeach
 </p>
@@ -42,6 +51,7 @@
     <h3>
         Все пользователи:
     </h3>
+
     @foreach($users as $user)
     <p>
         <h4>
@@ -52,12 +62,12 @@
         </h4>
     <form action="{{route('user.friendrequest', ['sender'=>Auth::id(), 'recipient'=>$user->id])}}" method="POST">
         @csrf
-        <input type="submit" placeholder="Добавить в друзья">
+        <input type="submit" value="Добавить в друзья" placeholder="Добавить в друзья" class="btn btn-warning me-2">
     </form>
     </p>
     @endforeach
 </p>
 
-
+</div>
 
 @endsection

@@ -60,9 +60,22 @@
                 @endguest
 
                 @auth()
-                    <div class="text-indigo-500">
-                        <h3> Вы вошли как {{Auth::user()->name}}</h3>
-                    </div>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <h3>
+                            <x-dropdown-link class="nav-link px-2 text-white"
+                                             :href="route('logout')"
+                                             onclick="event.preventDefault();
+                                             this.closest('form').submit();">
+                                {{Auth::user()->name }}
+                            </x-dropdown-link>
+                        </h3>
+
+                    </form>
+{{--                    <div class="text-indigo-500">--}}
+{{--                        <h3> Вы вошли как {{Auth::user()->name}}</h3>--}}
+{{--                    </div>--}}
                 @endauth
             </div>
         </div>

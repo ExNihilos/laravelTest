@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Game;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -18,7 +19,6 @@ class ReviewController extends Controller
             'user_id' => Auth::id(),
             'game_id' => $game->id
         ]);
-
-        return redirect()->to(url()->previous().'#reviews');
     }
+
 }

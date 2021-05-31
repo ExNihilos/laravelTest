@@ -1,7 +1,7 @@
 @extends('GamePortal.layouts.app')
 
 @section('title')
-    {{$game[0]->name}}
+    {{$game->name}}
 @endsection
 
 @section('content')
@@ -57,15 +57,15 @@
 
 <br>
 <h3>
-    Название: {{$game[0]->name}}
+    Название: {{$game->name}}
 </h3>
 
 <h3>
-    Metacritic: {{$game[0]->metacritic}}
+    Metacritic: {{$game->metacritic}}
 </h3>
 
 <h3>
-    Дата выхода: {{$game[0]->released}}
+    Дата выхода: {{$game->released}}
 </h3>
 
     <h3>
@@ -75,7 +75,7 @@
     <div class="container">
 
         <h4 class="text-indigo-500">
-            {{$descriptions->description}}
+            {{$game->description}}
         </h4>
     </div>
 
@@ -87,7 +87,7 @@
 {{--        <a href="#img1"><img src="{{ $screenshot->image}}" alt=""></a>--}}
 
 
-@foreach($game[0]->short_screenshots as $screenshot)
+@foreach($screenshots as $screenshot)
     <div class="col pb-3">
 {{--        <a href="#{{$screenshot->id}}">--}}
         <a data-fancybox="gallery" href="{{$screenshot->image}}">
@@ -124,6 +124,7 @@
 
 </div>
 
+    @if($trailer->data ?? null)
     <div class="game__movie">
         <div class="game-card-video started">
             <video width="800" height="600" src="{{$trailer->data->max??null}}" controls loop poster="{{$trailer->preview??null}}">
@@ -138,34 +139,48 @@
     </div>
 </div>
 
-<video  width="500" height="400" loop controls="controls" poster="{{$trailer->preview ?? null}}">
-{{--    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256667913/movie_max.mp4" type='video/ogg; codecs="theora, vorbis"'>--}}
-    <source src="{{$trailer->data->max??null}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-{{--    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256667913/movie_max.mp4" type='video/webm; codecs="vp8, vorbis"'>--}}
-    Тег video не поддерживается вашим браузером.
-    <a href="https://steamcdn-a.akamaihd.net/steam/apps/256667913/movie_max.mp4">Скачайте видео</a>.
-</video>
+    <video  width="500" height="400" loop controls="controls" poster="{{$trailer->preview ?? null}}">
+    {{--    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256667913/movie_max.mp4" type='video/ogg; codecs="theora, vorbis"'>--}}
+        <source src="{{$trailer->data->max??null}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    {{--    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256667913/movie_max.mp4" type='video/webm; codecs="vp8, vorbis"'>--}}
+        Тег video не поддерживается вашим браузером.
+        <a href="https://steamcdn-a.akamaihd.net/steam/apps/256667913/movie_max.mp4">Скачайте видео</a>.
+    </video>
+    @endif
+
+
+    <p><a name="reviews"></a></p>
 
     <div class="container py-5"  id="custom-cards">
         <h2 class="pb-2 border-bottom">Отзывы</h2>
-        <div class="d-flex row row-cols-3 align-items-stretch py-5">
+        <div class="d-flex row row-cols-2 align-items-stretch py-5">
             <div class="container">
-                @foreach($reviews as $review)
-                {{$review->text}}
-                <div class="pt-3">
-                    {{$review->user->name}} - {{$review->user->email}}
-                </div>
-                    <hr><br>
-                @endforeach
+                @if(empty($reviews)==false)
+                    @foreach($reviews as $review)
+                        {{$review->text}}
+                        <div class="pt-3">
+                            {{$review->user->name}} - {{$review->user->email}}
+                        </div>
+                        <hr><br>
+                    @endforeach
+
+                        @empty($reviews[0])
+                            <div class="text-center">
+                              <h3> Отзывов пока нету.</h3>
+                            </div>
+                        @endempty
+                    <br>
+                @endif
+
             </div>
-            <form action="{{route('reviews.store', [$game[0]->name])}}" method="POST">
+
+            <form action="{{route('reviews.store', [$game->id])}}" method="POST">
                 @csrf
                 <div><textarea name="text" id="text" cols="50" rows="10" placeholder="Введите текст вашего отзыва"></textarea></div>
                 <div><input type="submit" class="mt-2 btn btn-warning" value="Отправить отзыв"></div>
             </form>
         </div>
     </div>
-
 @endsection
 
 

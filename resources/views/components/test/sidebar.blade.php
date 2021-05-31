@@ -91,12 +91,13 @@
                     <form action="{{route('market.index')}}">
 
                         @foreach($tags as $tag)
-                            <div>
-                                <label for="tag_{{$tag->id}}">{{$tag->name}}</label>
+                            <div >
                                 <input id="tag_{{$tag->id}}" name="tags[]" type="checkbox" value="{{$tag->id}}">
+
+                                <label for="tag_{{$tag->id}}">{{$tag->name}}</label>
                             </div>
                         @endforeach
-                            <input type="submit" value="Найти" class="btn btn-dark">
+                            <input type="submit" value="Найти" class="btn btn-dark mt-3 ">
                     </form>
 
                 @endif

@@ -11,10 +11,16 @@
 {{--    @include('components.test.sidebar')--}}
 
 {{--    @section('testsidebar')--}}
-{{--        HUIGOVNOSOBAKA--}}
+{{--        test--}}
 {{--    @endsection--}}
 
 
+<h5>
+{{--    Выбранные теги:--}}
+{{--    @foreach($reqTags as $tag)--}}
+{{--    {{$tag->name}},--}}
+{{--    @endforeach--}}
+</h5>
     <div class="container">
         @foreach($games as $game)
             {{$game->name}} <br>
@@ -22,7 +28,9 @@
     </div>
 
 
+<div class="mt-3">
     {{$games->links('vendor.pagination.tailwind-custom')}}
+</div>
 
 @endsection
 

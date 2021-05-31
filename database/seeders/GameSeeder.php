@@ -23,7 +23,7 @@ class GameSeeder extends Seeder
 
         $page=1;
 
-        for ($i=1; $i<10; $i++, $page++)
+        for ($i=1; $i<=25; $i++, $page++)
         {
             $content = file_get_contents('https://api.rawg.io/api/games?key=9167fc26de294c36bf13e920bff83f3e&page_size=40&page='.$page);
             $data = json_decode($content);
@@ -46,7 +46,8 @@ class GameSeeder extends Seeder
                     'publisher' => $data2->publishers[0]->name??null,
                     'release_date' => $game->released,
                     'price' => rand(300, 2000),
-                    'genres' => json_encode($game->genres[0])
+                    'genres' => json_encode($game->genres[0]),
+                    //'sales' => rand(1, 50)
                 ]);
             }
         }

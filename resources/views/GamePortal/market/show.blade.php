@@ -17,6 +17,6 @@
     </div>
 
 
-{{--    {{$games->links('vendor.pagination.tailwind')}}--}}
+    {{$games->links('vendor.pagination.tailwind-custom')}}
 
 @endsection
