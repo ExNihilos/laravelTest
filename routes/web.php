@@ -129,7 +129,9 @@ Route::get('/dashboard', function () {
 Route::get('/test', [TestGameController::class, 'game_tag_InputTest']);
 Route::get('/test/translate', [TestGameController::class, 'testTranslate']);
 Route::get('/test/justtest', [TestGameController::class, 'justtest']);
-
+Route::get('/test/login', [TestGameController::class, 'testLogin']);
+Route::get('/test/basic', [TestGameController::class, 'baseAuth'])->middleware('auth.basic');
+Route::get('/test/friends', [TestGameController::class, 'friends']);
 
 
 require __DIR__.'/auth.php';

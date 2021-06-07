@@ -53,7 +53,6 @@ class UserController extends Controller
             array_push($senders, User::find($friendRequest->sender_id));
         }
 
-
         $friendsIds = Friend::where('user_id', Auth::id())->get();
         $friends = [];
 

@@ -36,7 +36,6 @@ class TagSeeder extends Seeder
 //                  $result = $translate->translate($source, $target, $text, $attempts);
 
                 Tag::create([
-//                    'name' => $result,
                     'name' => $tag->name,
                 ]);
             }

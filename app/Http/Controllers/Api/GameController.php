@@ -29,4 +29,14 @@ class GameController extends Controller
         return response()->json($game, 200);
     }
 
+    public function index()
+    {
+        return Game::all();
+    }
+
+    public function destroy($id)
+    {
+        Game::find($id)->delete();
+    }
+
 }
