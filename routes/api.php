@@ -23,7 +23,12 @@ Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/games/{slug}', [GameController::class, 'apiGameShow']);
-Route::get('/games/store', [GameController::class, 'store']);
+Route::get('/games', [GameController::class, 'index']);
+Route::post('/games', [GameController::class, 'store']);
+Route::get('/games/{id}', [GameController::class, 'show']);
+Route::put('/games/{id}', [GameController::class, 'update']);
+Route::delete('/games/{id}', [GameController::class, 'destroy']);
+
 
 Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/games/{id}/reviews', [ReviewController::class, 'getReviewsByGame']);
@@ -35,6 +40,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/friends', [UserController::class, 'getFriends']);
+    Route::get('/friends/store', [UserController::class, 'friendStore']);
+    Route::get('/friends/deny', [UserController::class, 'friendDeny']);
 });
 
 

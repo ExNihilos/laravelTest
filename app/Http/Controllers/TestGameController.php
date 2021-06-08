@@ -15,9 +15,15 @@ class TestGameController extends Controller
 {
     public function friends()
     {
-        $user = User::find(11);
+//        $user = User::find(11);
+//
+//        dd($user->friends);
 
-        dd($user->friends);
+        $user = User::find(Auth::user());
+        dd($user);
+//        return response()->json([
+//            'user' => $user,
+//        ], 200);
     }
 
     public function baseAuth()

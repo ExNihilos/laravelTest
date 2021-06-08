@@ -26,37 +26,47 @@ class UserController extends Controller
         return User::find($id)->delete();
     }
 
+    //!!!
     public function profile()
     {
-         $user = User::find(Auth::user());
+         $user = User::find(Auth::user())->first();
 
          return response()->json([
-             'user' => $user
-         ], 200);
+             'user'=>$user
+             ], 200);
+         //return $user;
+         //return response()->json($user, 200);
     }
 
 
     public function friendStore(Request $request)
     {
-        Friend::create(
-            ['user_id' => $request->user, 'friend_id' => $request->friend],
-            ['user_id' => $request->friend, 'friend_id' => $request->user]
-        );
-//
-//        $friend = new Friend();
-//        $friend->user_id = $request->user;
-//        $friend->friend_id = $request->friend;
-//        $friend->save();
 
-//        $friend = new Friend();
-//        $friend->user_id = $request->friend;
-//        $friend->friend_id = $request->user;
-//        $friend->save();
+//        Friend::create(
+//            ['user_id' => $request->user, 'friend_id' => $request->friend],
+//            ['user_id' => $request->friend, 'friend_id' => $request->user]
+//        );
+//
+        $friend = new Friend();
+        $friend->user_id = $request->user;
+        $friend->friend_id = $request->friend;
+        $friend->save();
+
+        $friend = new Friend();
+        $friend->user_id = $request->friend;
+        $friend->friend_id = $request->user;
+        $friend->save();
 
         $friendRequest = FriendRequest::where('sender_id', $request->user)
             ->orWhere('recipient_id', $request->user);
         $friendRequest->delete();
 
+    }
+
+    public function friendDeny(Request $request)
+    {
+        $f=FriendRequest::where('sender_id', $request->sender)->where('recipient_id', $request->recipient)->delete();
+        return redirect()->back();
     }
 
     public function getFriends()

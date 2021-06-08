@@ -9,6 +9,18 @@ class Game extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'developer',
+        'publisher',
+        'genre',
+        'description',
+        'release_date',
+        'price',
+        'metacritic'
+
+    ];
+
     public function reviews()
     {
         return $this->hasMany(Review::class);

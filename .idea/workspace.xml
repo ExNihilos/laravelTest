@@ -19,24 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13bd1af4-40a7-4caf-9134-28bfd9d51a64" name="Default Changelist" comment="added translate service">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/GameController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ReviewController.php" afterDir="false" />
+    <list default="true" id="13bd1af4-40a7-4caf-9134-28bfd9d51a64" name="Default Changelist" comment="Added tokens for API (Laravel Sanctum) and some API routes">
+      <change beforePath="$PROJECT_DIR$/.idea/anotherLaravelTest2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/anotherLaravelTest2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MarketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MarketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReviewController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestGameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestGameController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/GameSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/GameSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/GamePortal/market/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/GamePortal/market/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/GamePortal/market/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/GamePortal/market/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/GamePortal/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/GamePortal/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/GamePortal/user/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/GamePortal/user/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_19_122413_create_reviews_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_19_122413_create_reviews_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/GamePortal/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/GamePortal/user/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/test/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/test/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/test/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/test/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -161,6 +154,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/vendor/laravel/breeze" />
       <path value="$PROJECT_DIR$/vendor/dejurin/php-google-translate-for-free" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
     </include_path>
   </component>
   <component name="ProjectId" id="1rUb9pUEQ4xEjPyfMXNWn93uXm3" />
@@ -172,22 +166,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testLara" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../anotherLaraTest" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources\views\test" />
+      <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources" />
+      <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources\views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\public\images" />
       <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources\views" />
       <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources" />
       <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources\views\components\test" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources\views\test" />
-      <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources" />
-      <recent name="E:\Programs\Open Server\OpenServer\domains\anotherLaravelTest2\resources\views" />
     </key>
   </component>
   <component name="RunManager">
@@ -253,7 +247,16 @@
       <workItem from="1622178030185" duration="11336000" />
       <workItem from="1622281458464" duration="2775000" />
       <workItem from="1622361844853" duration="38076000" />
-      <workItem from="1622428873418" duration="476000" />
+      <workItem from="1622428873418" duration="1287000" />
+      <workItem from="1622459523295" duration="2566000" />
+      <workItem from="1622650526912" duration="1007000" />
+      <workItem from="1622747666558" duration="4024000" />
+      <workItem from="1622800260662" duration="8179000" />
+      <workItem from="1622901106095" duration="8275000" />
+      <workItem from="1622967472818" duration="28090000" />
+      <workItem from="1623036461685" duration="2143000" />
+      <workItem from="1623063165728" duration="13353000" />
+      <workItem from="1623136646545" duration="1555000" />
     </task>
     <task id="LOCAL-00001" summary="git init">
       <created>1620965305903</created>
@@ -290,7 +293,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622180484273</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="bug fixes">
+      <created>1622429552158</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622429552158</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added tokens for API (Laravel Sanctum) and some API routes">
+      <created>1623040268108</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623040268108</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +329,9 @@
     <MESSAGE value="git init" />
     <MESSAGE value="added translate service" />
     <MESSAGE value="Added genres and tags" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added genres and tags" />
+    <MESSAGE value="bug fixes" />
+    <MESSAGE value="Added tokens for API (Laravel Sanctum) and some API routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tokens for API (Laravel Sanctum) and some API routes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="174" key="#CLI_Interpreters" timestamp="1621242333226">
@@ -327,14 +346,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="677" y="266" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1620387587890" />
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622401908011">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1623005447411">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622401908011" />
-    <state x="662" y="272" key="FileChooserDialogImpl" timestamp="1622048470024">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1623005447411" />
+    <state x="662" y="272" key="FileChooserDialogImpl" timestamp="1622749195471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="662" y="272" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622048470024" />
+    <state x="662" y="272" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622749195471" />
     <state x="795" y="442" key="NewPhpFileDialog" timestamp="1619552654486">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -343,21 +362,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="151" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1621243029062" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622180509655">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1623040279443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622180509655" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1623040279443" />
     <state x="667" y="224" width="585" height="592" key="find.popup" timestamp="1622403263405">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="224" width="585" height="592" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622403263405" />
-    <state x="156" y="235" key="run.anything.popup" timestamp="1622403211009">
+    <state x="156" y="235" key="run.anything.popup" timestamp="1622817023658">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="156" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622403211009" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1622398741226">
+    <state x="156" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622817023658" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1623138038596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622398741226" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1623138038596" />
   </component>
 </project>

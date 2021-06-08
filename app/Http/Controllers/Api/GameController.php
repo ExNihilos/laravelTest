@@ -10,13 +10,30 @@ class GameController extends Controller
 {
     public function store(Request $request)
     {
-        $game = new Game();
-        $game->name = 'Somegame3';
-        $game->developer = 'Somedeveloper3';
-        $game->publisher = 'somePublisher3';
-        $game->price = 300;
-        $game->score = 65;
-        $game->save();
+//        $game = new Game();
+//        $game->name = $request->name;
+//        $game->developer = $request->developer;
+//        $game->publisher = $request->publisher;
+//        $game->price = $request->price;
+//        $game->metacritic = $request->metacritic;
+//        $game->save();
+
+
+//        $game = Game::create([
+//            'name' => $request->name,
+//            'developer' => $request->developer,
+//            'publisher' => $request->publisher,
+//            'price' => $request->price,
+//            'metacritic' =>  $request->metacritic
+//    ]);
+
+
+//        $game = Game::create($request->toArray());
+
+
+        $game = Game::create($request->all());
+
+        return response()->json($game, 200);
     }
 
 
@@ -34,9 +51,22 @@ class GameController extends Controller
         return Game::all();
     }
 
+    public function show($id)
+    {
+        return Game::find($id);
+    }
+
+    public function update(Request $request, $id)
+    {
+       // return response()->json($request->all());
+       $game = Game::find($id)->update($request->all());
+       return response()->json($game, 200);
+    }
+
     public function destroy($id)
     {
-        Game::find($id)->delete();
+        Game::findOrFail($id)->delete();
+        return response('delete success', 200);
     }
 
 }

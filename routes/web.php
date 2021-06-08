@@ -87,7 +87,7 @@ Route::get('/friends', [UserController::class, 'index'])->name('friend.index');
 Route::post('/friendrequest/{sender}/{recipient}', [UserController::class, 'friendRequest'])->name('user.friendrequest');
 Route::get('/friendstore', [UserController::class, 'friendStore'])->name('friend.store');
 Route::get('/frienddeny', [UserController::class, 'friendDeny'])->name('friend.deny');
-Route::delete('/{friend?}/frienddestroy', [UserController::class, 'friendDestroy'])->name('friends.destroy');
+Route::get('/frienddestroy', [UserController::class, 'friendDestroy'])->name('friends.destroy');
 
 Route::get('/market', [MarketController::class, 'index'])->name('market.index');
 Route::get('/market/{genre}', [MarketController::class, 'show'])->name('market.show');

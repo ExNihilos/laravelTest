@@ -10,9 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function friendDestroy()
+    public function friendDestroy(Request $request)
     {
+        Friend::where('user_id',$request->user_id)
+            ->where('friend_id', $request->friend_id)
+            ->orWhere('friend_id',$request->user_id)
+            ->where('user_id', $request->friend_id)
+            ->delete();
 
+        return redirect()->back();
     }
 
     public function friendDeny(Request $request)
@@ -80,6 +86,8 @@ class UserController extends Controller
             'sender_id' => $sender,
             'recipient_id' => $recipient
         ]);
+
+        return redirect()->back();
     }
 
     public function checkRequest()
