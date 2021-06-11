@@ -21,6 +21,11 @@ class UserController extends Controller
         return User::find($id);
     }
 
+    public function update(Request $request, $id)
+    {
+
+    }
+
     public function destroy($id)
     {
         return User::find($id)->delete();

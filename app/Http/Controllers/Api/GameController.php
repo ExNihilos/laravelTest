@@ -33,6 +33,13 @@ class GameController extends Controller
 
         $game = Game::create($request->all());
 
+//        foreach ($request->tags as $tag)
+//        {
+//           // $game->tags()->attach($request->$tag);
+//        }
+        $game->tags()->attach($request->tags);
+
+        //dd($request);
         return response()->json($game, 200);
     }
 

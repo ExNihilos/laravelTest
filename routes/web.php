@@ -2,6 +2,7 @@
 
 use App\Http\Controllers;
 use App\Http\Controllers\BladeController;
+use App\Http\Controllers\CommentaryController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MarketController;
@@ -99,6 +100,9 @@ Route::post('/games/{id}/reviews', [ReviewController::class, 'store'])->name('re
 Route::put('/users/{id}/update', [GameController::class, 'userupdate'])->name('user.update');
 Route::get('/users/me', [UserController::class, 'edit'])->name('user.edit');
 
+
+Route::resource('/commentaries', CommentaryController::class);
+
 //Route::get('/index', function (){
 //   return view('index');
 //})->middleware('auth');
@@ -132,6 +136,7 @@ Route::get('/test/justtest', [TestGameController::class, 'justtest']);
 Route::get('/test/login', [TestGameController::class, 'testLogin']);
 Route::get('/test/basic', [TestGameController::class, 'baseAuth'])->middleware('auth.basic');
 Route::get('/test/friends', [TestGameController::class, 'friends']);
-
+Route::get('/admin/add',  [TestGameController::class, 'addAdmin']);
+Route::get('/game/addwithtag',  [TestGameController::class, 'addGameTag']);
 
 require __DIR__.'/auth.php';

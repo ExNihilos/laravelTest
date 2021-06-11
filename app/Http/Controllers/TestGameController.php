@@ -2,17 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Game;
 use App\Models\Tag;
 use App\Models\User;
 use Dejurin\GoogleTranslateForFree;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 class TestGameController extends Controller
 {
+
+    public function addGameTag()
+    {
+        $game = new Game();
+        $game->name = "dfasdf";
+        $game->developer = "afsdfsad";
+        $game->publisher = "sdfasd";
+        $game->price = 123;
+        $game->metacritic = 70;
+        $game->save();
+
+        $game->tags()->attach([1,2,3,4]);
+    }
+
+    public function addAdmin()
+    {
+      $admin = new Admin();
+      $admin->login = 'adm2@mail.com';
+      $admin->password = Hash::make('qwertyuiop1');
+      $admin->save();
+    }
+
     public function friends()
     {
 //        $user = User::find(11);

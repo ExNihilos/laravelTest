@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\GameController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\api\TagController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+Route::post('/admin/login', [AdminController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/games/{slug}', [GameController::class, 'apiGameShow']);
@@ -28,6 +31,8 @@ Route::post('/games', [GameController::class, 'store']);
 Route::get('/games/{id}', [GameController::class, 'show']);
 Route::put('/games/{id}', [GameController::class, 'update']);
 Route::delete('/games/{id}', [GameController::class, 'destroy']);
+
+Route::get('/tags', [TagController::class, 'index']);
 
 
 Route::get('/reviews', [ReviewController::class, 'index']);
@@ -38,6 +43,7 @@ Route::delete('/reviews/{reviewId}', [ReviewController::class, 'destroy'])->midd
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/users', [UserController::class, 'index']);
+    Route::put('/users/{id}', [UserController::class, 'update']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/friends', [UserController::class, 'getFriends']);
     Route::get('/friends/store', [UserController::class, 'friendStore']);

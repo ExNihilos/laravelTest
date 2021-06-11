@@ -25,7 +25,7 @@ class CreateGamesTable extends Migration
                 $table->integer('metacritic')->nullable();
                 $table->string('poster')->nullable();
                 $table->integer('price')->nullable();
-                $table->integer('sales')->nullable();
+                $table->integer('sales')->nullable()->default(0);
 
                 $table->timestamps();
 

@@ -21,6 +21,11 @@ class Game extends Model
 
     ];
 
+//    protected $hidden = [
+//        'sales'
+//    ];
+
+
     public function reviews()
     {
         return $this->hasMany(Review::class);
