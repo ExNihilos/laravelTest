@@ -30,7 +30,7 @@ class AdminController extends Controller
 //        return response()->json($admin);
         if(Hash::check($request->password, $admin->password))
         {
-            $token = $admin->createToken('admin_token', ['admin:full'])->plainTextToken;
+            $token = $admin->createToken('admin_token', ['admin'])->plainTextToken;
             return response()->json([
                  'admin' => $admin,
                 'token' => $token
@@ -42,5 +42,19 @@ class AdminController extends Controller
                 'error' => 'Incorrect login or password!'
             ]);
         }
+    }
+
+    public function ban(Request $request, $id)
+    {
+        if (Auth::user()->tokenCan('admin'))
+        {
+            //$is_banned = json_decode($request->is_banned);
+            $user = User::find($id);
+            $user->is_banned = $request->is_banned;
+            $user->save();
+            return response()->json($user, 200);
+        }
+
+        else return response()->json('Unauthenticated access', 401);
     }
 }

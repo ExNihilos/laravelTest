@@ -19,14 +19,16 @@ class TestGameController extends Controller
     public function addGameTag()
     {
         $game = new Game();
-        $game->name = "dfasdf";
+        $game->name = "aaaaa";
         $game->developer = "afsdfsad";
         $game->publisher = "sdfasd";
         $game->price = 123;
-        $game->metacritic = 70;
+        $game->metacritic = 90;
         $game->save();
 
-        $game->tags()->attach([1,2,3,4]);
+        $tag1 = Tag::find(198);
+        $tag2 = Tag::find(199);
+        $game->tags()->attach([$tag1->id,$tag2->id]);
     }
 
     public function addAdmin()

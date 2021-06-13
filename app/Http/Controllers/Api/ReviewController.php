@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Game;
 use App\Models\Review;
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,24 +35,32 @@ class ReviewController extends Controller
         //return $review;
     }
 
-    public function destroy($reviewId)
+    public function destroy($id)
     {
-        $review = Review::find($reviewId);
-        if($review->user_id == Auth::id())
+        $review = Review::find($id);
+        $user = Auth::user();
+        if($review->user_id == $user->id || $user->tokenCan('admin'))
         {
-            return $review->delete();
+            return response()->json($review->delete(),200);
         }
+
+        else return response()->json('Unauthenticated access', 401);
     }
 
     public function getReviewsByGame($id)
     {
-        return Game::find($id)->reviews;
+//        return Game::find($id)->reviews;
+//        $reviews = Game::find($id)->reviews->with('user');
+//        return Game::find($id)->reviews->with('reviews.user');
+        $reviews = Review::with('user')->where('game_id', $id)->get();
+        return response()->json($reviews);
+
+        // return response()->json($reviews);
     }
 
     public function getReviewsByUser($id)
     {
         return User::find($id)->reviews;
     }
-
 
 }

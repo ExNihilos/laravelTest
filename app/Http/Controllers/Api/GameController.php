@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
@@ -31,16 +32,18 @@ class GameController extends Controller
 //        $game = Game::create($request->toArray());
 
 
-        $game = Game::create($request->all());
-
+        if(Auth::user()->tokenCan('admin'))
+        {
+            $game = Game::create($request->all());
 //        foreach ($request->tags as $tag)
 //        {
 //           // $game->tags()->attach($request->$tag);
 //        }
-        $game->tags()->attach($request->tags);
+            $game->tags()->attach($request->tags);
+            return response()->json($game, 200);
+        }
 
-        //dd($request);
-        return response()->json($game, 200);
+        else return response()->json('Unauthenticated access',401);
     }
 
 
@@ -72,8 +75,13 @@ class GameController extends Controller
 
     public function destroy($id)
     {
-        Game::findOrFail($id)->delete();
-        return response('delete success', 200);
+        if (Auth::user()->tokenCan('admin'))
+        {
+            Game::findOrFail($id)->delete();
+            return response('delete success', 200);
+        }
+
+        else return response()->json('Unauthenticated access',401);
     }
 
 }

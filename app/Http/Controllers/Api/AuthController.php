@@ -49,7 +49,7 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request->email)->first();
-        $token = $user->createToken('token')->plainTextToken;
+        $token = $user->createToken('user_token', ['user'])->plainTextToken;
 
         return response()->json([
             'user' => $user,

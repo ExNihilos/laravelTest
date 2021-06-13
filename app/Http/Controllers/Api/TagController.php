@@ -12,4 +12,10 @@ class TagController extends Controller
     {
         return Tag::all();
     }
+
+    public function destroy($id)
+    {
+        Tag::findOrFail($id)->delete();
+        return response('delete success', 200);
+    }
 }

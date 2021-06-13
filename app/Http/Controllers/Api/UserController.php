@@ -43,15 +43,20 @@ class UserController extends Controller
          //return response()->json($user, 200);
     }
 
+    public function friendRequest(Request $request, $sender, $recipient)
+    {
+        $friendRequest = FriendRequest::create([
+            'sender_id' => $sender,
+            'recipient_id' => $recipient
+        ]);
+
+        return response()->json($friendRequest, 200);
+    }
+
+
 
     public function friendStore(Request $request)
     {
-
-//        Friend::create(
-//            ['user_id' => $request->user, 'friend_id' => $request->friend],
-//            ['user_id' => $request->friend, 'friend_id' => $request->user]
-//        );
-//
         $friend = new Friend();
         $friend->user_id = $request->user;
         $friend->friend_id = $request->friend;
@@ -66,12 +71,13 @@ class UserController extends Controller
             ->orWhere('recipient_id', $request->user);
         $friendRequest->delete();
 
+        return response()->json('friend add success', 200);
     }
 
     public function friendDeny(Request $request)
     {
         $f=FriendRequest::where('sender_id', $request->sender)->where('recipient_id', $request->recipient)->delete();
-        return redirect()->back();
+        return redirect()->json('friend remove success', 200);
     }
 
     public function getFriends()

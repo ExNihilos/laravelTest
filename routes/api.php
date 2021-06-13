@@ -27,26 +27,28 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 Route::get('/games/{slug}', [GameController::class, 'apiGameShow']);
 Route::get('/games', [GameController::class, 'index']);
-Route::post('/games', [GameController::class, 'store']);
+Route::post('/games', [GameController::class, 'store'])->middleware('auth:sanctum');
 Route::get('/games/{id}', [GameController::class, 'show']);
 Route::put('/games/{id}', [GameController::class, 'update']);
-Route::delete('/games/{id}', [GameController::class, 'destroy']);
+Route::delete('/games/{id}', [GameController::class, 'destroy'])->middleware('auth:sanctum');
 
 Route::get('/tags', [TagController::class, 'index']);
-
+Route::delete('/tags/{id}', [TagController::class, 'destroy'])->middleware('auth:sanctum');
 
 Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/games/{id}/reviews', [ReviewController::class, 'getReviewsByGame']);
 Route::get('/users/{id}/reviews', [ReviewController::class, 'getReviewsByUser']);
 Route::post('/games/{id}/reviews', [ReviewController::class, 'store'])->middleware('auth:sanctum');
-Route::delete('/reviews/{reviewId}', [ReviewController::class, 'destroy'])->middleware('auth:sanctum');
+Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/users', [UserController::class, 'index']);
     Route::put('/users/{id}', [UserController::class, 'update']);
+    Route::put('/users/{id}/ban', [AdminController::class, 'ban']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/friends', [UserController::class, 'getFriends']);
-    Route::get('/friends/store', [UserController::class, 'friendStore']);
+    Route::post('/friends/request/{sender}/{recipient}', [UserController::class, 'friendRequest']);
+    Route::post('/friends/store', [UserController::class, 'friendStore']);
     Route::get('/friends/deny', [UserController::class, 'friendDeny']);
 });
 
