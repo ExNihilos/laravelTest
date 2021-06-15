@@ -32,7 +32,7 @@
             </div>
         </li>
         <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="true">
                 Статьи
             </button>
             <div class="collapse" id="orders-collapse" style="">
@@ -68,6 +68,7 @@
                 @yield('testsidebar')
 
                 @if(str_contains(request()->path(), 'market'))
+                <div class="container">
                     <h5 class="h-16">
                         Жанры:
                     </h5>
@@ -80,25 +81,24 @@
                               </li>
                         @endforeach
                     </ul>
+                 </div>
+                <hr>
 
-                <div class="mt-3">
+                <div class="container mt-3">
                     <h5 class="h-16">
                         Теги:
                     </h5>
-                </div>
-
 
                     <form action="{{route('market.index')}}">
-
                         @foreach($tags as $tag)
                             <div >
                                 <input id="tag_{{$tag->id}}" name="tags[]" type="checkbox" value="{{$tag->id}}">
-
                                 <label for="tag_{{$tag->id}}">{{$tag->name}}</label>
                             </div>
                         @endforeach
-                            <input type="submit" value="Найти" class="btn btn-dark mt-3 ">
+                            <input type="submit" value="Найти" class="btn btn-dark btn-block mt-3" style="width:250px">
                     </form>
+                </div>
 
                 @endif
         </li>

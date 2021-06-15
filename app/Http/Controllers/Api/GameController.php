@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Game;
+use App\Models\Library;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -84,4 +85,23 @@ class GameController extends Controller
         else return response()->json('Unauthenticated access',401);
     }
 
+    public function buy($id)
+    {
+        $game = Game::find($id);
+        Library::create([
+            'game_id' => $game->id,
+            'user_id' => Auth::id(),
+        ]);
+
+//        Auth::user()->attach($game);
+        $game->sales += 1;
+        $game->save();
+        return response('purchase success', 200);
+    }
+
+    public function library()
+    {
+        $library = Auth::user()->library;
+        return response()->json($library, 200);
+    }
 }

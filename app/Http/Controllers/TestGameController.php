@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Developer;
 use App\Models\Game;
+use App\Models\Library;
 use App\Models\Tag;
 use App\Models\User;
 use Dejurin\GoogleTranslateForFree;
@@ -15,6 +17,27 @@ use Illuminate\Support\Str;
 
 class TestGameController extends Controller
 {
+    public function library()
+    {
+       $user = User::find(11);
+
+       dd($user->library);
+    }
+
+    public function gameDev()
+    {
+        $developer=Developer::find(6);
+
+        foreach ($developer->games as $game)
+        {
+           echo $game->metacritic."\n";
+        }
+//        dd($developer->games[0]->name);
+//
+
+      //  $game = Game::find(1);
+        //dd($game->developer1->id);
+    }
 
     public function addGameTag()
     {

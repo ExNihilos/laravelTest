@@ -16,11 +16,13 @@ class CreateDevelopersTable extends Migration
         if (!Schema::hasTable('developers')) {
             Schema::create('developers', function (Blueprint $table) {
                 $table->id();
-                $table->string('name')->nullable();
+                $table->string('name');
                 $table->double('rating')->nullable();
                 $table->string('country')->nullable();
                 $table->string('headquarter')->nullable();
                 $table->year('foundation_year')->nullable();
+                $table->string('parent_company')->nullable();
+                $table->string('status')->nullable();
                 $table->timestamps();
             });
         }

@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Developer;
 use App\Models\Game;
+use App\Models\Publisher;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,11 +17,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            //UserSeeder::class,
-           // GameSeeder::class,
-            //TagSeeder::class,
+            UserSeeder::class,
+            PublisherSeeder::class,
+            DeveloperSeeder::class,
+            GameSeeder::class,
+            TagSeeder::class,
             GameTag_Seeder::class
-
         ]);
 
 

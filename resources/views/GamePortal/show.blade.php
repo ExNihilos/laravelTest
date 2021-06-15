@@ -4,6 +4,7 @@
     {{$game->name}}
 @endsection
 
+
 @section('content')
     {{--    <style>--}}
 {{--        * {--}}
@@ -56,16 +57,81 @@
 {{--@include('components.test.sidebar')--}}
 
 <br>
-<h3>
-    Название: {{$game->name}}
-</h3>
+
+{{--    <div class="container">--}}
+{{--        <div style="float: left">--}}
+{{--            текст--}}
+{{--        </div>--}}
+
+{{--        <div style="float: right">--}}
+{{--            <button class="btn btn-primary">--}}
+{{--                some--}}
+{{--            </button>--}}
+{{--        </div>--}}
+
+
+{{--    </div>--}}
+{{--    <br><br><br><br><br><br>--}}
+
+
+
+
+
+{{--    <div class="row">--}}
+{{--        <div  class="col-md-6">--}}
+{{--            <h3 class="d-flex float-left">--}}
+{{--                Название: {{$game->name}}--}}
+{{--            </h3>--}}
+{{--        </div>--}}
+{{--        <div style="float:none; position: absolute; right: 0;">--}}
+{{--        </div>--}}
+
+
+{{--        @auth--}}
+{{--            <div class="d-flex" style="float:none; position: absolute; right: 0;">--}}
+{{--        <div class="col-md-6 text-right">--}}
+{{--                <a href="{{route('games.buy', $game->id)}}">--}}
+{{--                    <button type="button" class="btn btn-warning" style="display: block; margin-left: auto;">Купить</button>--}}
+{{--                    <button type="button" class="btn btn-warning">Купить</button>--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--        @endauth--}}
+{{--    </div>--}}
+
+
+<div class="container">
+
+    <div style="float: left">
+        <h3 class="">
+            Название: {{$game->name}}
+        </h3>
+    </div>
+    @auth
+        <div style="float: right">
+            <a href="{{route('games.buy', $game->id)}}">
+                <button type="button" class="btn btn-warning" style="width: 200px"> Купить</button>
+            </a>
+        </div>
+    @endauth
+
+
+    <div>
+        <h3>
+            Разработчик: <a href="{{route('developers.show', $game->developer1->id)}}" class="link-dark rounded">{{$game->developer}}</a>
+        </h3>
+    </div>
+
+
+    <h3>
+        Издатель: {{$game->publisher}}
+    </h3>
 
 <h3>
     Metacritic: {{$game->metacritic}}
 </h3>
 
 <h3>
-    Дата выхода: {{$game->released}}
+    Дата выхода: {{$game->release_date}}
 </h3>
 
     <h3>
@@ -78,7 +144,7 @@
             {{$game->description}}
         </h4>
     </div>
-
+</div>
 
 <div class="container py-5"  id="custom-cards">
     <h2 class="pb-2 border-bottom">Скриншоты</h2>
@@ -150,18 +216,22 @@
 
 
     <p><a name="reviews"></a></p>
-
     <div class="container py-5"  id="custom-cards">
         <h2 class="pb-2 border-bottom">Отзывы</h2>
         <div class="d-flex row row-cols-2 align-items-stretch py-5">
             <div class="container">
-                @if(empty($reviews)==false)
+                @if(!empty($reviews))
                     @foreach($reviews as $review)
-                        {{$review->text}}
-                        <div class="pt-3">
-                            {{$review->user->name}} - {{$review->user->email}}
-                        </div>
-                        <hr><br>
+                        <a href="" class="nav-link text-dark">
+                                {{$review->text}}
+                                <div class="pt-3" >
+                                    {{$review->user->name}} - {{$review->user->email}}
+                                </div>
+                                <div class="pt-3">
+                                    Комментарии: {{count($review->commentaries)}}
+                                </div>
+                                <hr>
+                        </a>
                     @endforeach
 
                         @empty($reviews[0])
@@ -174,11 +244,13 @@
 
             </div>
 
+            @auth
             <form action="{{route('reviews.store', [$game->id])}}" method="POST">
                 @csrf
                 <div><textarea name="text" id="text" cols="50" rows="10" placeholder="Введите текст вашего отзыва"></textarea></div>
                 <div><input type="submit" class="mt-2 btn btn-warning" value="Отправить отзыв"></div>
             </form>
+            @endauth
         </div>
     </div>
 @endsection

@@ -47,9 +47,13 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::put('/users/{id}/ban', [AdminController::class, 'ban']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/friends', [UserController::class, 'getFriends']);
+    Route::get('/friends/request', [UserController::class, 'getRequests']);
     Route::post('/friends/request/{sender}/{recipient}', [UserController::class, 'friendRequest']);
     Route::post('/friends/store', [UserController::class, 'friendStore']);
     Route::get('/friends/deny', [UserController::class, 'friendDeny']);
+    Route::delete('/friends', [UserController::class, 'friendDestroy']);
+    Route::get('/games/{id}/buy', [GameController::class, 'buy']);
+    Route::get('/library', [GameController::class, 'library']);
 });
 
 

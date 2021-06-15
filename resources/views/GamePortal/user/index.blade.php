@@ -7,23 +7,29 @@
 {{--@include('components.test.sidebar')--}}
 
 <div class="container d-flex row row-cols-1">
+    {{--<h3>--}}
+    {{--    Заявки в друзья:--}}
+    {{--</h3>--}}
 
-<h3>
-    Заявки в друзья:
-</h3>
+    <details >
+        <summary>  Заявки в друзья: </summary>
+        @foreach($senders as $sender)
+            <h4>
+                {{$sender->name}}
 
-@foreach($senders as $sender)
-<h4>
-    {{$sender->name}} - {{$sender->email}}
-</h4>
-<a href="{{route('friend.store', ['user' => $sender->id, 'friend'=>Auth::id()])}}" >
-    <input type="button" value="Принять" placeholder="Принять">
-</a>
+                <a href="{{route('friend.store', ['user' => $sender->id, 'friend'=>Auth::id()])}}" >
+                    <input type="button" value="Принять" placeholder="Принять" class="btn btn-warning me-2">
+                </a>
 
-<a href="{{route('friend.deny', ['sender' => $sender->id, 'recipient'=>Auth::id()])}}">
-    <input type="button" value="Отклонить" placeholder="Отклонить">
-</a>
-@endforeach
+                <a href="{{route('friend.deny', ['sender' => $sender->id, 'recipient'=>Auth::id()])}}">
+                    <input type="button" value="Отклонить" class="btn me-3">
+                </a>
+            </h4>
+        @endforeach
+    </details>
+
+
+
 
 
 <p>

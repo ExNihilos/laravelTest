@@ -15,9 +15,9 @@ class CreateCommentariesTable extends Migration
     {
         Schema::create('commentaries', function (Blueprint $table) {
             $table->id();
-            $table->text('text');
-            $table->foreignId('user_id');
-            $table->foreignId('review_id');
+            $table->string('text', 2500);
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('review_id')->constrained();
             $table->timestamps();
         });
     }

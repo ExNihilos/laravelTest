@@ -18,13 +18,21 @@ class Game extends Model
         'release_date',
         'price',
         'metacritic'
-
     ];
 
 //    protected $hidden = [
 //        'sales'
 //    ];
 
+    public function developer1()
+    {
+        return $this->belongsTo(Developer::class, 'developer', 'name');
+    }
+
+    public function publisher()
+    {
+        return $this->belongsTo(Publisher::class,'publisher', 'name');
+    }
 
     public function reviews()
     {

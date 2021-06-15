@@ -26,7 +26,7 @@ class ReviewController extends Controller
             'user_id' => Auth::id()
         ]);
 
-//        $review = Review::create([
+//        $review = review::create([
 //            'text' => $request->text,
 //            'user_id' => Auth::id(),
 //            'game_id' => $game->id

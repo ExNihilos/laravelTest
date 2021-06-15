@@ -16,7 +16,7 @@ class CreateGamesTable extends Migration
         if(!Schema::hasTable('games')) {
             Schema::create('games', function (Blueprint $table) {
                 $table->id();
-                $table->string('name')->nullable();
+                $table->string('name');
                 $table->string('developer')->nullable();
                 $table->string('publisher')->nullable();
                 $table->string('genre')->nullable();
@@ -26,11 +26,10 @@ class CreateGamesTable extends Migration
                 $table->string('poster')->nullable();
                 $table->integer('price')->nullable();
                 $table->integer('sales')->nullable()->default(0);
-
                 $table->timestamps();
 
-//            $table->foreign('developer')->references('name')->on('developers');
-//            $table->foreign('publisher')->references('name')->on('publishers');
+                $table->foreign('developer')->references('name')->on('developers');
+                $table->foreign('publisher')->references('name')->on('publishers');
 
             });
         }

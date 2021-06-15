@@ -8,6 +8,7 @@ use App\Models\Review;
 use http\QueryString;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use \Dejurin\GoogleTranslateForFree;
 use Illuminate\Support\Str;
@@ -15,14 +16,22 @@ use Illuminate\Support\Str;
 
 class GameController extends Controller
 {
+    public function buy($id)
+    {
+//        if (Auth::user()->library)
+        $game = Game::find($id);
+        $game->sales+=1;
+    }
+
+
     public function search(Request $request)
     {
         $name = Str::slug($request->search);
         return redirect()->route('game.show', $name);
         //$this->show($name);
         //return view('GamePortal.show');
-    }
 
+    }
     public function show($name)
     {
         //$name=$this->escapefile_url($name);
@@ -37,8 +46,8 @@ class GameController extends Controller
 
         //dd($trailer->data->max);
 
-        //$review = Review::find(1);
-        // $review2 = Review::find(2)->user->where('name', 'aaa')->get();
+        //$review = review::find(1);
+        // $review2 = review::find(2)->user->where('name', 'aaa')->get();
         //dd($review2->name);
         // dd($review2[0]->name);
         //dd($review->user()->where);

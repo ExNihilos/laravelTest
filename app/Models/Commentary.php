@@ -12,4 +12,9 @@ class Commentary extends Model
     protected $fillable = [
       'text'
     ];
+
+    public function review()
+    {
+        return $this->belongsTo(Review::class);
+    }
 }

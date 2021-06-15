@@ -38,7 +38,7 @@ class GameSeeder extends Seeder
 
                 Game::create([
                     'name' => $game->name,
-                    'genre' => $game->genres[0]->name,
+                    'genre' => $game->genres[0]->name??null,
                     'poster' => $game->background_image,
                     'metacritic' => $game->metacritic,
                     'description' => $result,
@@ -46,7 +46,7 @@ class GameSeeder extends Seeder
                     'publisher' => $data2->publishers[0]->name??null,
                     'release_date' => $game->released,
                     'price' => rand(300, 2000),
-                    'genres' => json_encode($game->genres[0]),
+                    //'genres' => json_encode($game->genres[0]),
                     //'sales' => rand(1, 50)
                 ]);
             }

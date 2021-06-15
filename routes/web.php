@@ -3,6 +3,7 @@
 use App\Http\Controllers;
 use App\Http\Controllers\BladeController;
 use App\Http\Controllers\CommentaryController;
+use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MarketController;
@@ -83,6 +84,7 @@ Route::get('/games', [GameController::class, 'index']);
 Route::get('/games/test', [GameController::class, 'test']);
 Route::get('/games/reqtest', [GameController::class, 'testRequest']);
 Route::get('/games/{name}', [GameController::class, 'show'])->name('game.show');
+Route::get('/games/{id}/buy', [GameController::class, 'buy'])->name('games.buy');
 Route::post('/games/search', [GameController::class, 'search'])->name('game.search');
 Route::get('/friends', [UserController::class, 'index'])->name('friend.index');
 Route::post('/friendrequest/{sender}/{recipient}', [UserController::class, 'friendRequest'])->name('user.friendrequest');
@@ -96,6 +98,7 @@ Route::get('/market/tags', [MarketController::class, 'showWithTags'])->name('mar
 
 Route::post('/games/{id}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
+Route::get('/developers/{id}', [DeveloperController::class, 'show'])->name('developers.show');
 
 Route::put('/users/{id}/update', [GameController::class, 'userupdate'])->name('user.update');
 Route::get('/users/me', [UserController::class, 'edit'])->name('user.edit');
@@ -138,5 +141,7 @@ Route::get('/test/basic', [TestGameController::class, 'baseAuth'])->middleware('
 Route::get('/test/friends', [TestGameController::class, 'friends']);
 Route::get('/admin/add',  [TestGameController::class, 'addAdmin']);
 Route::get('/game/addwithtag',  [TestGameController::class, 'addGameTag']);
+Route::get('/game/dev',  [TestGameController::class, 'gameDev']);
+Route::get('/test/library', [TestGameController::class, 'library']);
 
 require __DIR__.'/auth.php';

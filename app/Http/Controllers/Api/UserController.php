@@ -43,6 +43,28 @@ class UserController extends Controller
          //return response()->json($user, 200);
     }
 
+    public function getRequests()
+    {
+        $friendRequests = FriendRequest::where('recipient_id', Auth::id())->get() ?? [];
+        $senders = [];
+
+        foreach ($friendRequests as $friendRequest)
+        {
+            array_push($senders, User::find($friendRequest->sender_id));
+        }
+
+        return response()->json($senders,200);
+
+//        return view('GamePortal.user.index', [
+//            'senders' => $senders ?? null,
+//            'friends' => $friends ?? null,
+//            'friends_class' => "text-secondary"
+////            'friendRequests' => $friendRequests->sender_id ?? null
+//        ]);
+
+    }
+
+
     public function friendRequest(Request $request, $sender, $recipient)
     {
         $friendRequest = FriendRequest::create([
@@ -86,4 +108,12 @@ class UserController extends Controller
         return $user->friends;
     }
 
+    public function friendDestroy($request)
+    {
+        Friend::where('user_id',$request->user_id)
+            ->where('friend_id', $request->friend_id)
+            ->orWhere('friend_id',$request->user_id)
+            ->where('user_id', $request->friend_id)
+            ->delete();
+    }
 }

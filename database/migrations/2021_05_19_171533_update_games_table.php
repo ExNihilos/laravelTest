@@ -16,11 +16,12 @@ class UpdateGamesTable extends Migration
 //        Schema::table('games', function (Blueprint $table) {
 //            $table->json('genres')->nullable();
 //        });
-        if(!Schema::hasTable('reviews')) {
-            Schema::table('reviews', function (Blueprint $table) {
-                $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade')->change();
-            });
-        }
+
+//        if(!Schema::hasTable('reviews')) {
+//            Schema::table('reviews', function (Blueprint $table) {
+//                $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade')->change();
+//            });
+//        }
 
     }
 
@@ -32,8 +33,8 @@ class UpdateGamesTable extends Migration
      */
     public function down()
     {
-        Schema::table('games', function (Blueprint $table) {
-            $table->dropColumn('genres');
-        });
+//        Schema::table('games', function (Blueprint $table) {
+//            $table->dropColumn('genres');
+//        });
     }
 }
